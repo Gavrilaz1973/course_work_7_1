@@ -42,6 +42,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'users',
+    'habits',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,12 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_TIMEZONE = "UTC"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+TEL_TOKEN = os.getenv('TELEGRAM_TOKEN')
+
