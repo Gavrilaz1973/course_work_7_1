@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'users',
     'habits',
     'django_celery_beat',
+    'rest_framework_simplejwt',
+    'drf_yasg',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -142,4 +145,19 @@ CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
 TEL_TOKEN = os.getenv('TELEGRAM_TOKEN')
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+CORS_ALLOWED_ORIGINS = [
+    "https://read-only.example.com",
+    "https://read-and-write.example.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://read-and-write.example.com",
+]
 
