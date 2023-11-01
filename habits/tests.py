@@ -41,7 +41,7 @@ class HabitsTestCase(APITestCase):
             }
         )
         self.assertTrue(
-            Habit.objects.all().exist()
+            Habit.objects.all().exists()
         )
 
 
